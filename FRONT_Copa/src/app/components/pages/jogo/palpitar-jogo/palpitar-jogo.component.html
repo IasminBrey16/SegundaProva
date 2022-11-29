@@ -2,5 +2,32 @@
   <mat-card-header>
     <mat-card-title> Palpitar Jogo </mat-card-title>
   </mat-card-header>
-  <mat-card-content> </mat-card-content>
+  <mat-card-content> 
+    <mat-form-field class="input" id="id">
+      <mat-label for="id">Id:</mat-label>
+      <input
+        disabled=""
+        matInput
+        type="text"
+        name="id"
+        [(ngModel)]="jogoId"
+      ></mat-form-field>
+    <mat-form-field id="pontuacaoSelecaoA" class="input">
+      <mat-label for="pontuacaoSelecaoA">Sugestão de Pontuação Seleção A</mat-label>
+      <input matInput type="number" name="pontuacaoSelecaoA" [(ngModel)]="pontuacaoSelecaoA" />
+    </mat-form-field>
+    <mat-form-field id="pontuacaoSelecaoB" class="input">
+      <mat-label for="pontuacaoSelecaoB">Sugestão de Pontuação Seleção B</mat-label>
+      <input matInput type="number" name="pontuacaoSelecaoB" [(ngModel)]="pontuacaoSelecaoB" />
+    </mat-form-field>
+    
+  </mat-card-content>
+  <button
+    mat-raised-button
+    color="warn"
+    id="btnAlterar"
+    (click)="palpitar()"
+  >
+    Salvar Palpite
+  </button>
 </mat-card>

@@ -3,13 +3,39 @@ Content-Type: application/json
 
 {
   "selecaoA": {
-    "id": 1
+  "id": 1
   },
+  "SelecaoAId": 1,
   "selecaoB": {
     "id": 2
-  }
+  },
+  "SelecaoBId": 2,
+  "PontuacaoSelecaoA": 0,
+  "PontuacaoSelecaoB": 0
 }
 
 ###
 GET https://localhost:5001/api/jogo/listar
 
+###
+PATCH  https://localhost:5001/api/jogo/alterar
+Content-Type: application/json
+
+{
+  "id" : 2,
+  "selecaoA": {
+  "id": 1,
+  "nome": "Brasil"
+  },
+  "SelecaoAId": 1,
+  "selecaoB": {
+    "id": 2,
+    "nome": "Sérvia"
+  },
+  "SelecaoBId": 2,
+  "PontuacaoSelecaoA": 2,
+  "PontuacaoSelecaoB": 0
+}
+
+###
+GET https://localhost:5001/api/jogo/buscar/1

@@ -2,7 +2,7 @@ POST https://localhost:5001/api/selecao/cadastrar
 Content-Type: application/json
 
 {
-    "nome" : "Sérvia"
+    "nome" : "Croácia"
 }
 
 ###

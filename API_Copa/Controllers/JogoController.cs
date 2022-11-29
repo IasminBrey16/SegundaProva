@@ -19,8 +19,8 @@ namespace api.Controllers
         [Route("cadastrar")]
         public IActionResult Cadastrar([FromBody] Jogo jogo)
         {
-            jogo.SelecaoA = _context.Selecoes.Find(jogo.SelecaoA.Id);
-            jogo.SelecaoB = _context.Selecoes.Find(jogo.SelecaoB.Id);
+            jogo.SelecaoA = _context.Selecoes.Find(jogo.SelecaoAId);
+            jogo.SelecaoB = _context.Selecoes.Find(jogo.SelecaoBId);
             _context.Jogos.Add(jogo);
             _context.SaveChanges();
             return Created("", jogo);
@@ -33,5 +33,31 @@ namespace api.Controllers
             List<Jogo> jogos = _context.Jogos.Include(x => x.SelecaoA).Include(x => x.SelecaoB).ToList();
             return jogos.Count != 0 ? Ok(jogos) : NotFound();
         }
+
+        [HttpPatch]
+        [Route("alterar")]
+        public IActionResult Alterar([FromBody] Jogo jogo)
+        {
+            try
+            {
+                _context.Jogos.Update(jogo);
+                _context.SaveChanges();
+                return Ok(jogo);
+            }
+            catch
+            {
+                return NotFound();
+            }
+        }
+
+        [HttpGet]
+        [Route("buscar/{id}")]
+        public IActionResult Buscar([FromRoute] int id)
+        {
+            Jogo jogo = _context.Jogos.
+                Find(id);
+            return jogo != null ? Ok(jogo) : NotFound();
+        }
+
     }
 }
